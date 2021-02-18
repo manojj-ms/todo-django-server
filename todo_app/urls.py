@@ -1,13 +1,13 @@
-from django.urls import path
+from django.conf.urls import url
 from todo_app.endpoints import list
 
 urlpatterns = [
     #GET, POST, DELETE
-    path('/api/tutorials', list.tutorial_detail),
+    url(r'^api/tutorials$', list.tutorial_list),
 
     #GET, PUT, DELETE
-    path('/api/tutorials/:id', list.tutorial_detail),
+    url(r'^api/tutorials/(?P<pk>[0-9]+)$', list.tutorial_detail),
 
     #GET
-    path('/api/tutorials/published', list.tutorial_detail),
+    url(r'^api/tutorials/published$', list.tutorial_list_published),
 ]
